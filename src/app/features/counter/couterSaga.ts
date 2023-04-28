@@ -9,6 +9,7 @@ import { incrementSaga, incrementSagaSuccess } from "./counterSlice";
 // }
 
 function* handleIncrementSaga(action: PayloadAction<number>) {
+  console.log('Waiting 2s');
   console.log("handle Increment Saga");
 
   yield delay(2000);

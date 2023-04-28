@@ -1,13 +1,29 @@
-import React from 'react';
-import styles from './styles.module.scss'
-import { useAppDispatch, useAppSelector } from '@/app/hooks';
-import { decrement, increment, selectCount } from '@/app/features/counter/counterSlice';
+import React, { useState } from "react";
+import styles from "./styles.module.scss";
+import Logo from "../../assets/icons/logo.svg";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+  incrementIfOdd,
+  incrementSaga,
+  selectCount,
+} from "@/app/features/counter/counterSlice";
+import Image from "next/image";
 
-export default function AboutPage () {
-    const dispatch = useAppDispatch()
-    const count = useAppSelector(selectCount);
+export default function AboutPage() {
+  const count = useAppSelector(selectCount);
+  const dispatch = useAppDispatch();
+  const [incrementAmount, setIncrementAmount] = useState("2");
+
+  const incrementValue = Number(incrementAmount) || 0;
+
   return (
     <div>
+      <div className={styles.row}>
+        <Image src={Logo} alt="Logo" />
+      </div>
       <div className={styles.row}>
         <button
           className={styles.button}
@@ -23,6 +39,38 @@ export default function AboutPage () {
           onClick={() => dispatch(increment())}
         >
           +
+        </button>
+      </div>
+      <div className={styles.row}>
+        <input
+          className={styles.textbox}
+          aria-label="Set increment amount"
+          value={incrementAmount}
+          onChange={(e) => setIncrementAmount(e.target.value)}
+        />
+        <button
+          className={styles.button}
+          onClick={() => dispatch(incrementByAmount(incrementValue))}
+        >
+          Add Amount
+        </button>
+        {/* <button
+          className={styles.asyncButton}
+          onClick={() => dispatch(incrementAsync(incrementValue))}
+        >
+          Add Async
+        </button> */}
+        <button
+          className={styles.asyncButton}
+          onClick={() => dispatch(incrementSaga(incrementValue))}
+        >
+          Add Async Saga
+        </button>
+        <button
+          className={styles.button}
+          onClick={() => dispatch(incrementIfOdd(incrementValue))}
+        >
+          Add If Odd
         </button>
       </div>
     </div>
