@@ -10,7 +10,7 @@ import {
   incrementSaga,
   selectCount,
 } from "@/app/features/counter/counterSlice";
-import Image from "next/image";
+import { Image} from 'antd'
 
 export default function AboutPage() {
   const count = useAppSelector(selectCount);
@@ -18,11 +18,11 @@ export default function AboutPage() {
   const [incrementAmount, setIncrementAmount] = useState("2");
 
   const incrementValue = Number(incrementAmount) || 0;
-
+    
   return (
     <div>
       <div className={styles.row}>
-        <Image src={Logo} alt="Logo" />
+        <Image src={Logo.src} alt="Logo" />
       </div>
       <div className={styles.row}>
         <button
