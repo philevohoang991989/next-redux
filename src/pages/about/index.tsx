@@ -10,7 +10,7 @@ import {
   incrementSaga,
   selectCount,
 } from "@/app/features/counter/counterSlice";
-import { Image} from 'antd'
+import { Button, Image} from 'antd'
 
 export default function AboutPage() {
   const count = useAppSelector(selectCount);
@@ -25,21 +25,21 @@ export default function AboutPage() {
         <Image src={Logo.src} alt="Logo" />
       </div>
       <div className={styles.row}>
-        <button
+        <Button className={styles.btnClick} onClick={() => dispatch(decrement())}>-</Button>
+        {/* <button
           className={styles.button}
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
         >
           -
-        </button>
+        </button> */}
         <span className={styles.value}>{count}</span>
-        <button
-          className={styles.button}
-          aria-label="Increment value"
+        <Button
+          className={styles.btnClick}
           onClick={() => dispatch(increment())}
         >
           +
-        </button>
+        </Button>
       </div>
       <div className={styles.row}>
         <input
@@ -48,30 +48,30 @@ export default function AboutPage() {
           value={incrementAmount}
           onChange={(e) => setIncrementAmount(e.target.value)}
         />
-        <button
+        <Button
           className={styles.button}
           onClick={() => dispatch(incrementByAmount(incrementValue))}
         >
           Add Amount
-        </button>
+        </Button>
         {/* <button
           className={styles.asyncButton}
           onClick={() => dispatch(incrementAsync(incrementValue))}
         >
           Add Async
         </button> */}
-        <button
+        <Button
           className={styles.asyncButton}
           onClick={() => dispatch(incrementSaga(incrementValue))}
         >
           Add Async Saga
-        </button>
-        <button
+        </Button>
+        <Button
           className={styles.button}
           onClick={() => dispatch(incrementIfOdd(incrementValue))}
         >
           Add If Odd
-        </button>
+        </Button>
       </div>
     </div>
   );

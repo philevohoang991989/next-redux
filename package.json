@@ -9,12 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "^11.10.8",
+    "@emotion/react": "^11.10.8",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.8",
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/cookies": "^0.7.7",
     "@types/node": "18.16.2",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
     "antd": "^5.4.6",
     "axios": "^1.4.0",
+    "cookies": "^0.8.0",
+    "cookies-next": "^2.1.1",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
     "next": "13.3.1",
@@ -23,6 +30,7 @@
     "react-redux": "^8.0.5",
     "redux-saga": "^1.2.3",
     "sass": "^1.62.1",
+    "swr": "^2.1.5",
     "typescript": "5.0.4"
   }
 }
