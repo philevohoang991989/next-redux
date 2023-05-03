@@ -1,7 +1,8 @@
 'use client';
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import counterReducer from "./features/counter/counterSlice";
+import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
+import authReducer from "./features/auth/authSlice";
+import counterReducer from "./features/counter/counterSlice";
 import rootSaga from "./rootSaga";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -9,6 +10,7 @@ const sagaMiddleware = createSagaMiddleware();
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    auth: authReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),
