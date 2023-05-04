@@ -10,10 +10,11 @@ export interface AuthProps {
 
 export function Auth({ children }: AuthProps) {
   const router = useRouter();
-  let token = getCookie(storageKeys.accessToken);
+  // let token = getCookie(storageKeys.accessToken);
+  let token = localStorage.getItem('access_token')
 
   useEffect(() => {
-    if (!token) router.push("/login");
+    if (!token) router.push("/auth/login");
   }, [router, token]);
 
   return (

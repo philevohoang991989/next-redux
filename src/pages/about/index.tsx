@@ -11,6 +11,7 @@ import {
   selectCount,
 } from "@/app/features/counter/counterSlice";
 import { Button, Image} from 'antd'
+import { AdminLayout } from "@/components/layout/admin";
 
 export default function AboutPage() {
   const count = useAppSelector(selectCount);
@@ -76,3 +77,4 @@ export default function AboutPage() {
     </div>
   );
 }
+AboutPage.Layout = AdminLayout
